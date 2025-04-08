@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Nested Queries</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+    h2 {
+      font-size: 22px;
+      color: #333;
+      margin-top: 30px;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+    .syntax, .example {
+      border-left: 5px solid #04AA6D;
+      background-color: #f4f4f4;
+      padding: 12px;
+      margin: 20px 0;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #aaa;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Nested Queries</h1>
+
+  <p>In SQL, a nested query (also known as a subquery) is a query within another SQL query and embedded within the WHERE clause. A subquery can be used with operators like <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>IN</code>, <code>ANY</code>, <code>ALL</code>, or <code>EXISTS</code>.</p>
+
+  <h2>Syntax</h2>
+  <div class="syntax">
+SELECT column_name<br>
+FROM table_name<br>
+WHERE column_name OPERATOR<br>
+  (SELECT column_name FROM table_name WHERE condition);
+  </div>
+
+  <h2>Nested Query Example</h2>
+  <p>Let us consider the <code>CUSTOMERS</code> table:</p>
+
+  <table>
+    <tr><th>ID</th><th>NAME</th><th>AGE</th><th>ADDRESS</th><th>SALARY</th></tr>
+    <tr><td>1</td><td>Ramesh</td><td>32</td><td>Ahmedabad</td><td>2000.00</td></tr>
+    <tr><td>2</td><td>Khilan</td><td>25</td><td>Delhi</td><td>1500.00</td></tr>
+    <tr><td>3</td><td>Kaushik</td><td>23</td><td>Kota</td><td>2000.00</td></tr>
+    <tr><td>4</td><td>Chaitali</td><td>25</td><td>Mumbai</td><td>6500.00</td></tr>
+    <tr><td>5</td><td>Hardik</td><td>27</td><td>Bhopal</td><td>8500.00</td></tr>
+    <tr><td>6</td><td>Komal</td><td>22</td><td>Hyderabad</td><td>4500.00</td></tr>
+    <tr><td>7</td><td>Muffy</td><td>24</td><td>Indore</td><td>10000.00</td></tr>
+  </table>
+
+  <p>The following query will return all customers whose salary is equal to the minimum salary from the table:</p>
+
+  <div class="example">
+SELECT * FROM CUSTOMERS<br>
+WHERE SALARY = (SELECT MIN(SALARY) FROM CUSTOMERS);
+  </div>
+
+  <h2>Output</h2>
+  <table>
+    <tr><th>ID</th><th>NAME</th><th>AGE</th><th>ADDRESS</th><th>SALARY</th></tr>
+    <tr><td>2</td><td>Khilan</td><td>25</td><td>Delhi</td><td>1500.00</td></tr>
+  </table>
+
+  <h2>Types of Nested Queries</h2>
+
+  <ul>
+    <li><strong>Single Row Subquery</strong> - returns only one row.</li>
+    <li><strong>Multiple Row Subquery</strong> - returns more than one row.</li>
+    <li><strong>Multiple Column Subquery</strong> - returns more than one column.</li>
+    <li><strong>Correlated Subquery</strong> - subquery depends on outer query.</li>
+  </ul>
+
+  <h2>Single Row Subquery Example</h2>
+  <p>Get customers with the same salary as the customer named 'Kaushik':</p>
+
+  <div class="example">
+SELECT * FROM CUSTOMERS<br>
+WHERE SALARY = (SELECT SALARY FROM CUSTOMERS WHERE NAME = 'Kaushik');
+  </div>
+
+  <h2>Multiple Row Subquery Example</h2>
+  <p>Get customers from cities where any customer has a salary more than 5000:</p>
+
+  <div class="example">
+SELECT * FROM CUSTOMERS<br>
+WHERE ADDRESS IN (SELECT ADDRESS FROM CUSTOMERS WHERE SALARY &gt; 5000);
+  </div>
+
+  <h2>Multiple Column Subquery Example</h2>
+  <p>Get customers whose (AGE, SALARY) pair matches those of any other customer:</p>
+
+  <div class="example">
+SELECT * FROM CUSTOMERS<br>
+WHERE (AGE, SALARY) IN (SELECT AGE, SALARY FROM CUSTOMERS WHERE SALARY &gt; 5000);
+  </div>
+
+  <h2>Correlated Subquery Example</h2>
+  <p>Get all customers whose salary is more than the average salary of customers from the same city:</p>
+
+  <div class="example">
+SELECT * FROM CUSTOMERS C1<br>
+WHERE SALARY &gt; (SELECT AVG(SALARY) FROM CUSTOMERS C2 WHERE C1.ADDRESS = C2.ADDRESS);
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL FULL OUTER JOIN</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL FULL OUTER JOIN</h1>
+    <p>The SQL <code>FULL OUTER JOIN</code> keyword returns all records when there is a match in either the left (table1) or right (table2) table records. This means it combines the results of both <code>LEFT JOIN</code> and <code>RIGHT JOIN</code>. If there are rows in "table1" that do not have matches in "table2", or if there are rows in "table2" that do not have matches in "table1", those rows will be included in the result set with <code>NULL</code> values in the columns where there is no match.</p>
+  </div>
+
+  <div class="section">
+    <h2>Syntax</h2>
+    <div class="code-box">
+      SELECT column_name(s)
+      FROM table1
+      FULL OUTER JOIN table2
+      ON table1.column_name = table2.column_name
+      WHERE condition;
+    </div>
+    <p><strong>Note:</strong> The <code>FULL OUTER JOIN</code> keyword returns all matching records from both tables, whether the other table matches or not. Be cautious when using <code>FULL OUTER JOIN</code> as it can potentially return very large result sets.</p>
+  </div>
+
+  <div class="section">
+    <h2>Example</h2>
+    <p>Consider the following tables: <code>Customers</code> and <code>Orders</code>.</p>
+
+    <h3>Customers Table</h3>
+    <table>
+      <tr>
+        <th>CustomerID</th>
+        <th>CustomerName</th>
+        <th>ContactName</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>PostalCode</th>
+        <th>Country</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Obere Str. 57</td>
+        <td>Berlin</td>
+        <td>12209</td>
+        <td>Germany</td>
+      </tr>
+      <!-- Additional rows -->
+    </table>
+
+    <h3>Orders Table</h3>
+    <table>
+      <tr>
+        <th>OrderID</th>
+        <th>CustomerID</th>
+        <th>EmployeeID</th>
+        <th>OrderDate</th>
+        <th>ShipperID</th>
+      </tr>
+      <tr>
+        <td>10308</td>
+        <td>2</td>
+        <td>7</td>
+        <td>1996-09-18</td>
+        <td>3</td>
+      </tr>
+      <!-- Additional rows -->
+    </table>
+
+    <p>The following SQL statement selects all customers and all orders:</p>
+    <div class="code-box">
+      SELECT Customers.CustomerName, Orders.OrderID
+      FROM Customers
+      FULL OUTER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+      ORDER BY Customers.CustomerName;
+    </div>
+
+    <p><strong>Explanation:</strong> This query retrieves all records from both the "Customers" and "Orders" tables. If a customer has no corresponding orders, the "OrderID" will be <code>NULL</code>. Similarly, if an order has no corresponding customer, the "CustomerName" will be <code>NULL</code>.</p>
+  </div>
+
+  <div class="section">
+    <h2>Note</h2>
+    <p>Not all database systems support the <code>FULL OUTER JOIN</code> keyword. If it is not supported, you can achieve similar results by combining a <code>LEFT JOIN</code> and a <code>RIGHT JOIN</code> with a <code>UNION</code> clause.</p>
+  </div>
+
+</body>
+</html>

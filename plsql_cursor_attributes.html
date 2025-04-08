@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PL/SQL Cursor Attributes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+    h2 {
+      font-size: 22px;
+      color: #333;
+      margin-top: 30px;
+    }
+    h3 {
+      font-size: 18px;
+      color: #333;
+      margin-top: 20px;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+    .syntax, .example {
+      border-left: 5px solid #04AA6D;
+      background-color: #f4f4f4;
+      padding: 12px;
+      margin: 20px 0;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PL/SQL Cursor Attributes</h1>
+
+  <p>PL/SQL provides a set of attributes that allow developers to obtain information about the execution of SQL statements and cursor operations. These attributes can be used with both implicit and explicit cursors.</p>
+
+  <h2>Implicit Cursor Attributes</h2>
+
+  <p>Implicit cursors are automatically created by PL/SQL for SQL statements such as INSERT, UPDATE, DELETE, and SELECT INTO. The implicit cursor is always referred to as <code>SQL</code>.</p>
+
+  <ul>
+    <li><strong>SQL%FOUND</strong> - Returns TRUE if the last DML statement affected one or more rows.</li>
+    <li><strong>SQL%NOTFOUND</strong> - Returns TRUE if the last DML statement did not affect any row.</li>
+    <li><strong>SQL%ROWCOUNT</strong> - Returns the number of rows affected by the last DML statement.</li>
+    <li><strong>SQL%ISOPEN</strong> - Always returns FALSE for implicit cursors (they close automatically).</li>
+  </ul>
+
+  <h3>Example</h3>
+  <div class="example">
+BEGIN
+  UPDATE employees SET salary = salary * 1.1 WHERE department_id = 10;
+
+  IF SQL%FOUND THEN
+    DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' rows updated.');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('No rows updated.');
+  END IF;
+END;
+  </div>
+
+  <h2>Explicit Cursor Attributes</h2>
+
+  <p>Explicit cursors are user-defined and allow processing of query result sets row-by-row. The following attributes are available for explicit cursors:</p>
+
+  <ul>
+    <li><strong>cursor_name%ISOPEN</strong> - Returns TRUE if the cursor is open.</li>
+    <li><strong>cursor_name%FOUND</strong> - Returns TRUE if the last fetch returned a row.</li>
+    <li><strong>cursor_name%NOTFOUND</strong> - Returns TRUE if the last fetch did not return a row.</li>
+    <li><strong>cursor_name%ROWCOUNT</strong> - Returns the number of rows fetched so far.</li>
+  </ul>
+
+  <h3>Example</h3>
+  <div class="example">
+DECLARE
+  CURSOR emp_cursor IS
+    SELECT employee_id, first_name FROM employees WHERE department_id = 10;
+
+  v_id employees.employee_id%TYPE;
+  v_name employees.first_name%TYPE;
+BEGIN
+  OPEN emp_cursor;
+  
+  LOOP
+    FETCH emp_cursor INTO v_id, v_name;
+    EXIT WHEN emp_cursor%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE('ID: ' || v_id || ', Name: ' || v_name);
+  END LOOP;
+  
+  DBMS_OUTPUT.PUT_LINE('Total rows fetched: ' || emp_cursor%ROWCOUNT);
+  CLOSE emp_cursor;
+END;
+  </div>
+
+  <h2>Summary Table</h2>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>%ISOPEN</td>
+        <td>Returns TRUE if the cursor is open</td>
+        <td>Explicit Only</td>
+      </tr>
+      <tr>
+        <td>%FOUND</td>
+        <td>TRUE if the last fetch/DML affected a row</td>
+        <td>Both Implicit and Explicit</td>
+      </tr>
+      <tr>
+        <td>%NOTFOUND</td>
+        <td>TRUE if the last fetch/DML did not affect any row</td>
+        <td>Both Implicit and Explicit</td>
+      </tr>
+      <tr>
+        <td>%ROWCOUNT</td>
+        <td>Number of rows affected or fetched</td>
+        <td>Both Implicit and Explicit</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

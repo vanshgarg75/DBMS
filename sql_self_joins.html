@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL SELF JOIN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+    h2 {
+      font-size: 22px;
+      color: #333;
+      margin-top: 30px;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+    .syntax, .example {
+      border-left: 5px solid #04AA6D;
+      background-color: #f4f4f4;
+      padding: 12px;
+      margin: 20px 0;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL SELF JOIN</h1>
+
+  <p>A self join is a regular join, but the table is joined with itself.</p>
+
+  <h2>Syntax</h2>
+  <div class="syntax">
+SELECT column_names<br>
+FROM table1 T1, table1 T2<br>
+WHERE condition;
+  </div>
+
+  <h2>Demo Database</h2>
+  <p>In this example, we will use the "Employees" table:</p>
+
+  <div class="example">
++----+-------+-----------+----------+<br>
+| Id | Name  | Position  | ManagerId |<br>
++----+-------+-----------+----------+<br>
+| 1  | John  | CEO       | null     |<br>
+| 2  | Jane  | CTO       | 1        |<br>
+| 3  | Dave  | Developer | 2        |<br>
+| 4  | Sara  | Developer | 2        |<br>
+| 5  | Mike  | Manager   | 1        |<br>
++----+-------+-----------+----------+
+  </div>
+
+  <h2>SQL SELF JOIN Example</h2>
+  <p>The following SQL statement matches employees with their managers:</p>
+
+  <div class="example">
+SELECT E.Name AS Employee, M.Name AS Manager<br>
+FROM Employees E, Employees M<br>
+WHERE E.ManagerId = M.Id;
+  </div>
+
+  <h2>Result</h2>
+  <div class="example">
++----------+---------+<br>
+| Employee | Manager |<br>
++----------+---------+<br>
+| Jane     | John    |<br>
+| Dave     | Jane    |<br>
+| Sara     | Jane    |<br>
+| Mike     | John    |<br>
++----------+---------+
+  </div>
+
+</body>
+</html>

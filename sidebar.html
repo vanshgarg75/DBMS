@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #3b3b3b;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      gap: 30px; /* even spacing between top and bottom */
+      height: 100vh;
+      box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      font-weight: 700;
+      border-bottom: 2px solid #f39c12;
+      padding-bottom: 10px;
+      color: #e67e22;
+    }
+
+    .nav-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    details {
+      font-weight: 700;
+    }
+
+    summary {
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #e67e22;
+      padding: 10px;
+      border: 2px solid #f39c12;
+      border-radius: 5px;
+      text-align: center;
+      list-style: none;
+      position: relative;
+    }
+
+    summary::-webkit-details-marker,
+    summary::marker {
+      display: none; /* hide default arrows */
+    }
+
+    .dropdown-link {
+      display: block;
+      margin-top: 5px;
+      margin-left: 15px;
+      padding: 8px;
+      color: #f5f5f5;
+      text-decoration: none;
+      border-left: 3px solid #f39c12;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-link:hover {
+      background-color: #f39c12;
+      color: #3b3b3b;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 10px;
+      color: #e67e22;
+      text-decoration: none;
+      border: 2px solid #f39c12;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 700;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background-color: #f39c12;
+      color: #3b3b3b;
+    }
+
+    .button {
+      display: inline-block;
+      color: #ffffff;
+      background-color: #f39c12;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 700;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #cc814f;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>DBMS</h2>
+
+    <div class="nav-section">
+      <details>
+        <summary>SQL</summary>
+        <a href="sql_datatypes.html" class="dropdown-link" target="content">Data Types</a>
+  <a href="sql_create_tables.html" class="dropdown-link" target="content">Creating Tables</a>
+  <a href="sql_create_from_another.html" class="dropdown-link" target="content">Creating Table from Another Table</a>
+  <a href="sql_insert.html" class="dropdown-link" target="content">Inserting Values into a Table</a>
+  <a href="sql_update_columns.html" class="dropdown-link" target="content">Updating Column(s) of a Table</a>
+  <a href="sql_delete_rows.html" class="dropdown-link" target="content">Deleting Row(s) from a Table</a>
+  <a href="sql_drop_column.html" class="dropdown-link" target="content">Dropping a Column</a>
+  <a href="sql_query_tables.html" class="dropdown-link" target="content">Querying Database Tables</a>
+  <a href="sql_conditional_retrieval.html" class="dropdown-link" target="content">Conditional Retrieval of Rows</a>
+  <a href="sql_null_values.html" class="dropdown-link" target="content">Working with Null Values</a>
+  <a href="sql_pattern_matching.html" class="dropdown-link" target="content">Matching a Pattern from a Table</a>
+  <a href="sql_ordering_results.html" class="dropdown-link" target="content">Ordering the Result of a Query</a>
+  <a href="sql_aggregate_functions.html" class="dropdown-link" target="content">Aggregate Functions</a>
+  <a href="sql_grouping_results.html" class="dropdown-link" target="content">Grouping the Result of a Query</a>
+  <a href="sql_views.html" class="dropdown-link" target="content">Creation and Deletion of Views</a>
+  <a href="sql_grant_revoke.html" class="dropdown-link" target="content">Managing Privileges: GRANT & REVOKE</a>
+  <a href="sql_commit_rollback.html" class="dropdown-link" target="content">COMMIT and ROLLBACK</a>
+  <a href="sql_character_functions.html" class="dropdown-link" target="content">Character Functions</a>
+  <a href="sql_date_functions.html" class="dropdown-link" target="content">Date Functions</a>
+  <a href="sql_group_functions.html" class="dropdown-link" target="content">Group Functions</a>
+  <a href="sql_equi_joins.html" class="dropdown-link" target="content">Equi-Joins</a>
+  <a href="sql_cartesian_joins.html" class="dropdown-link" target="content">Cartesian Joins</a>
+  <a href="sql_outer_joins.html" class="dropdown-link" target="content">Outer Joins</a>
+  <a href="sql_self_joins.html" class="dropdown-link" target="content">Self-Joins</a>
+  <a href="sql_set_operators.html" class="dropdown-link" target="content">SET Operators: Union, Intersect, Minus</a>
+  <a href="sql_nested_queries.html" class="dropdown-link" target="content">Nested Queries</a>
+      </details>
+
+      <details>
+        <summary>PL-SQL</summary>
+        <a href="plsql_datatypes.html" class="dropdown-link" target="content">PL/SQL Data Types</a>
+  <a href="plsql_variables_constants.html" class="dropdown-link" target="content">Variables and Constants</a>
+  <a href="plsql_scope_visibility.html" class="dropdown-link" target="content">Scope and Visibility of a Variable</a>
+  <a href="plsql_assignments_expressions.html" class="dropdown-link" target="content">Assignments and Expressions</a>
+  <a href="plsql_operator_precedence.html" class="dropdown-link" target="content">Operator Precedence</a>
+  <a href="plsql_control_structures.html" class="dropdown-link" target="content">Conditional and Iterative Control</a>
+  <a href="plsql_cursor_management.html" class="dropdown-link" target="content">Cursor Management</a>
+  <a href="plsql_cursor_attributes.html" class="dropdown-link" target="content">Implicit/Explicit Cursor Attributes</a>
+  <a href="plsql_exception_handling.html" class="dropdown-link" target="content">Exception Handling in PL/SQL</a>
+  <a href="plsql_triggers_intro.html" class="dropdown-link" target="content">Database Triggers</a>
+      </details>
+
+      <a href="query.html" class="nav-link" target="content">Query</a>
+    </div>
+  </div>
+
+  <a href="index.html" class="button" target="_parent">Back to Index</a>
+</body>
+</html>

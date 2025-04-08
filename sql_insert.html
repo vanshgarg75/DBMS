@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL INSERT INTO Statement</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL INSERT INTO Statement</h1>
+    <p>The <strong>INSERT INTO</strong> statement is used to insert new records in a database table.</p>
+  </div>
+
+  <div class="section">
+    <h2>Syntax</h2>
+    <p><strong>Inserting into specific columns:</strong></p>
+    <div class="code-box">
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+    </div>
+
+    <p><strong>Inserting into all columns (if values are for every column, in order):</strong></p>
+    <div class="code-box">
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Example</h2>
+    <p>This example inserts a record into the <code>Customers</code> table:</p>
+
+    <div class="code-box">
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+    </div>
+
+    <p>In this example, the <code>CustomerID</code> column is not included because it is assumed to be auto-incremented.</p>
+  </div>
+
+  <div class="section">
+    <h2>Insert Into Specific Columns</h2>
+    <p>You can also insert data into only selected columns:</p>
+    <div class="code-box">
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+    </div>
+
+    <p>Other columns will use default values or remain <code>NULL</code> if no default is defined.</p>
+  </div>
+
+</body>
+</html>

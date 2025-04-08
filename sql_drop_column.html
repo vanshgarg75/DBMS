@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL DROP COLUMN Keyword</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL DROP COLUMN Keyword</h1>
+    <p>The <strong>DROP COLUMN</strong> command is used to delete a column in an existing table.</p>
+  </div>
+
+  <div class="section">
+    <h2>Syntax</h2>
+    <div class="code-box">
+ALTER TABLE table_name
+DROP COLUMN column_name;
+    </div>
+    <p><strong>Note:</strong> Some database systems do not allow deleting a column.</p>
+  </div>
+
+  <div class="section">
+    <h2>Example</h2>
+    <p>The following SQL deletes the "ContactName" column from the "Customers" table:</p>
+    <div class="code-box">
+ALTER TABLE Customers
+DROP COLUMN ContactName;
+    </div>
+  </div>
+
+</body>
+</html>

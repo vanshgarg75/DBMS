@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL LIKE Operator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL LIKE Operator</h1>
+    <p>The <strong>LIKE</strong> operator is used in a <code>WHERE</code> clause to search for a specified pattern in a column.</p>
+    <p>There are two wildcards often used in conjunction with the <code>LIKE</code> operator:</p>
+    <ul>
+      <li>The percent sign (<code>%</code>) represents zero, one, or multiple characters</li>
+      <li>The underscore (<code>_</code>) represents a single character</li>
+    </ul>
+    <p>The <code>LIKE</code> operator is case insensitive in some databases.</p>
+  </div>
+
+  <div class="section">
+    <h2>Syntax</h2>
+    <div class="code-box">
+SELECT column1, column2, ...
+FROM table_name
+WHERE columnN LIKE pattern;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Examples</h2>
+
+    <h3>Using the % Wildcard</h3>
+    <p>Finds any values that start with "a":</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%';
+    </div>
+
+    <p>Finds any values that end with "a":</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerName LIKE '%a';
+    </div>
+
+    <p>Finds any values that have "or" in any position:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerName LIKE '%or%';
+    </div>
+
+    <h3>Using the _ Wildcard</h3>
+    <p>Finds any values that have "r" in the second position:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerName LIKE '_r%';
+    </div>
+
+    <p>Finds any values that start with "a" and are at least 3 characters in length:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a_%_%';
+    </div>
+
+    <p>Finds any values that start with "a" and end with "o":</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%o';
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Using NOT with LIKE</h2>
+    <p>The <code>NOT</code> operator can be used to find records that do not match the pattern.</p>
+    <p>Finds any values that do not start with "a":</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerName NOT LIKE 'a%';
+    </div>
+  </div>
+
+</body>
+</html>

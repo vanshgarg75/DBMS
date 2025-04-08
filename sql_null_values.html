@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL NULL Values</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL NULL Values</h1>
+    <p>A field with a NULL value is a field with no value. It is important to understand that a NULL value is different from a zero value or a field that contains spaces. A field with a NULL value is one that has been left blank during record creation.</p>
+  </div>
+
+  <div class="section">
+    <h2>How to Test for NULL Values?</h2>
+    <p>It is not possible to test for NULL values with comparison operators, such as <code>=</code>, <code>&lt;</code>, or <code>&gt;</code>. Instead, we will have to use the <code>IS NULL</code> and <code>IS NOT NULL</code> operators.</p>
+  </div>
+
+  <div class="section">
+    <h2>IS NULL Syntax</h2>
+    <div class="code-box">
+SELECT column_names
+FROM table_name
+WHERE column_name IS NULL;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>IS NOT NULL Syntax</h2>
+    <div class="code-box">
+SELECT column_names
+FROM table_name
+WHERE column_name IS NOT NULL;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Example: IS NULL</h2>
+    <p>The following SQL statement selects all customers with a NULL value in the "Address" field:</p>
+    <div class="code-box">
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NULL;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Example: IS NOT NULL</h2>
+    <p>The following SQL statement selects all customers with a value in the "Address" field:</p>
+    <div class="code-box">
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NOT NULL;
+    </div>
+  </div>
+
+</body>
+</html>

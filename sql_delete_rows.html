@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL DELETE Statement</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL DELETE Statement</h1>
+    <p>The <strong>DELETE</strong> statement is used to remove existing records from a table.</p>
+  </div>
+
+  <div class="section">
+    <h2>Syntax</h2>
+    <div class="code-box">
+DELETE FROM table_name
+WHERE condition;
+    </div>
+    <p><strong>Note:</strong> Be cautious when deleting records. The <code>WHERE</code> clause specifies which record(s) should be deleted. If you omit the <code>WHERE</code> clause, all records in the table will be deleted!</p>
+  </div>
+
+  <div class="section">
+    <h2>Example</h2>
+    <p>Delete the customer "Alfreds Futterkiste" from the "Customers" table:</p>
+    <div class="code-box">
+DELETE FROM Customers
+WHERE CustomerName='Alfreds Futterkiste';
+    </div>
+    <p>After executing the above statement, the "Customers" table will no longer include the customer named "Alfreds Futterkiste".</p>
+  </div>
+
+  <div class="section">
+    <h2>Delete All Records</h2>
+    <p>It is possible to delete all rows in a table without deleting the table itself. This means that the table structure, attributes, and indexes will remain intact:</p>
+    <div class="code-box">
+DELETE FROM table_name;
+    </div>
+    <p>For example, to delete all records in the "Customers" table:</p>
+    <div class="code-box">
+DELETE FROM Customers;
+    </div>
+    <p><strong>Note:</strong> Be very careful when deleting records. If you omit the <code>WHERE</code> clause, all records in the table will be deleted!</p>
+  </div>
+
+</body>
+</html>

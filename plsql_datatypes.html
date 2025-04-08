@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PL/SQL Data Types</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+    h2 {
+      font-size: 22px;
+      color: #333;
+      margin-top: 30px;
+    }
+    h3 {
+      font-size: 18px;
+      color: #333;
+      margin-top: 20px;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+    .syntax, .example {
+      border-left: 5px solid #04AA6D;
+      background-color: #f4f4f4;
+      padding: 12px;
+      margin: 20px 0;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PL/SQL Data Types</h1>
+
+  <p>Each value in PL/SQL such as a constant, variable, or parameter has a data type, which defines a storage format, constraints, and a valid range of values.</p>
+
+  <h2>PL/SQL Categories of Data Types</h2>
+
+  <ul>
+    <li>Scalar types (e.g., number, character, Boolean, date)</li>
+    <li>Composite types (e.g., records, tables)</li>
+    <li>Reference types (e.g., pointers)</li>
+    <li>Large Object (LOB) types (e.g., images, videos, audio)</li>
+  </ul>
+
+  <h2>PL/SQL Scalar Data Types</h2>
+
+  <p>Scalar data types hold a single value and have no internal components. These include:</p>
+
+  <table>
+    <tr><th>Data Type</th><th>Description</th></tr>
+    <tr><td>NUMBER(p,s)</td><td>Stores fixed or floating-point numbers with optional precision (p) and scale (s)</td></tr>
+    <tr><td>CHAR(n)</td><td>Fixed-length character data</td></tr>
+    <tr><td>VARCHAR2(n)</td><td>Variable-length character data</td></tr>
+    <tr><td>BOOLEAN</td><td>Represents logical values TRUE, FALSE, or NULL</td></tr>
+    <tr><td>DATE</td><td>Stores date and time values</td></tr>
+  </table>
+
+  <h3>Syntax</h3>
+  <div class="syntax">
+variable_name datatype [NOT NULL] [:= initial_value];
+  </div>
+
+  <h3>Example</h3>
+  <div class="example">
+DECLARE<br>
+  age NUMBER(3);<br>
+  name VARCHAR2(50);<br>
+  is_valid BOOLEAN := TRUE;<br>
+BEGIN<br>
+  NULL;<br>
+END;
+  </div>
+
+  <h2>PL/SQL Composite Data Types</h2>
+
+  <p>Composite types have internal components that can be manipulated individually. Examples include:</p>
+
+  <ul>
+    <li><strong>RECORD</strong>: Group of related items as a unit</li>
+    <li><strong>TABLE</strong>: Collection of data like a single-dimensional array</li>
+    <li><strong>VARRAY</strong>: Variable-size array</li>
+  </ul>
+
+  <h2>PL/SQL Reference Data Types</h2>
+
+  <p>Reference types hold pointers or references to other program items. These include:</p>
+
+  <ul>
+    <li><strong>REF CURSOR</strong>: Pointer to a query result set</li>
+  </ul>
+
+  <h2>PL/SQL Large Object (LOB) Data Types</h2>
+
+  <p>LOB types are used to store large volumes of unstructured data like text, images, video, etc.</p>
+
+  <ul>
+    <li><strong>BLOB</strong>: Binary Large Object</li>
+    <li><strong>CLOB</strong>: Character Large Object</li>
+    <li><strong>NCLOB</strong>: NCHAR Character Large Object</li>
+    <li><strong>BFILE</strong>: Binary file stored in the file system</li>
+  </ul>
+
+  <h2>Summary</h2>
+  <p>PL/SQL provides a rich set of data types that help manage structured and unstructured data efficiently. Choosing the right data type is essential for memory optimization, performance, and data integrity.</p>
+
+</body>
+</html>

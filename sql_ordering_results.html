@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL ORDER BY Keyword</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL ORDER BY Keyword</h1>
+    <p>The <strong>ORDER BY</strong> keyword is used to sort the result set in ascending or descending order.</p>
+    <p>The <strong>ORDER BY</strong> keyword sorts the records in ascending order by default. To sort the records in descending order, use the <code>DESC</code> keyword.</p>
+  </div>
+
+  <div class="section">
+    <h2>Syntax</h2>
+    <div class="code-box">
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1 [ASC|DESC], column2 [ASC|DESC], ...;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Example: ORDER BY LastName</h2>
+    <p>The following SQL statement selects all customers from the "Customers" table, sorted by the "LastName" column:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+ORDER BY LastName;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Example: ORDER BY LastName DESC</h2>
+    <p>The following SQL statement selects all customers from the "Customers" table, sorted by the "LastName" column in descending order:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+ORDER BY LastName DESC;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Example: ORDER BY Country, CustomerName</h2>
+    <p>The following SQL statement selects all customers from the "Customers" table, sorted first by the "Country" column and then by the "CustomerName" column:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+ORDER BY Country, CustomerName;
+    </div>
+  </div>
+
+</body>
+</html>

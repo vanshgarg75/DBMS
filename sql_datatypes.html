@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SQL Data Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #e2e2e2;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL Data Types</h1>
+
+    <h2>SQL Data Types for MySQL, SQL Server, and MS Access</h2>
+    <table>
+        <tr>
+            <th>Data type</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>CHAR(size)</td>
+            <td>Fixed length string (can contain letters, numbers, and special characters). The size parameter defines the column length in characters - can be from 0 to 255. Default is 1</td>
+        </tr>
+        <tr>
+            <td>VARCHAR(size)</td>
+            <td>Variable length string. Max size is 65535 characters</td>
+        </tr>
+        <tr>
+            <td>TEXT(size)</td>
+            <td>Holds a string with a maximum length of 65,535 characters</td>
+        </tr>
+        <tr>
+            <td>TINYINT(size)</td>
+            <td>Allows whole numbers from -128 to 127 or 0 to 255</td>
+        </tr>
+        <tr>
+            <td>SMALLINT(size)</td>
+            <td>Allows whole numbers from -32,768 to 32,767 or 0 to 65,535</td>
+        </tr>
+        <tr>
+            <td>MEDIUMINT(size)</td>
+            <td>Allows whole numbers from -8,388,608 to 8,388,607 or 0 to 16,777,215</td>
+        </tr>
+        <tr>
+            <td>INT(size)</td>
+            <td>Allows whole numbers from -2,147,483,648 to 2,147,483,647 or 0 to 4,294,967,295</td>
+        </tr>
+        <tr>
+            <td>BIGINT(size)</td>
+            <td>Allows whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 or 0 to 18,446,744,073,709,551,615</td>
+        </tr>
+        <tr>
+            <td>DECIMAL(p,s)</td>
+            <td>Exact fixed-point number. The total number of digits is specified in <code>p</code>, and the number of digits after the decimal point is specified in <code>s</code></td>
+        </tr>
+        <tr>
+            <td>FLOAT(p)</td>
+            <td>Floating point number. Can hold approximate values</td>
+        </tr>
+        <tr>
+            <td>DATE</td>
+            <td>A date. Format: YYYY-MM-DD</td>
+        </tr>
+        <tr>
+            <td>DATETIME(fsp)</td>
+            <td>A date and time combination. Format: YYYY-MM-DD HH:MI:SS</td>
+        </tr>
+        <tr>
+            <td>TIMESTAMP(fsp)</td>
+            <td>A timestamp. Format: YYYY-MM-DD HH:MI:SS</td>
+        </tr>
+        <tr>
+            <td>TIME(fsp)</td>
+            <td>A time. Format: HH:MI:SS</td>
+        </tr>
+        <tr>
+            <td>YEAR</td>
+            <td>A year in four-digit format</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL WHERE Clause</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL WHERE Clause</h1>
+    <p>The <strong>WHERE</strong> clause is used to filter records. It is used to extract only those records that fulfill a specified condition.</p>
+  </div>
+
+  <div class="section">
+    <h2>Syntax</h2>
+    <div class="code-box">
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+    </div>
+    <p><strong>Note:</strong> The <code>WHERE</code> clause is not only used in <code>SELECT</code> statements, but also in <code>UPDATE</code>, <code>DELETE</code>, etc.</p>
+  </div>
+
+  <div class="section">
+    <h2>Example</h2>
+    <p>Select all customers from Mexico:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE Country='Mexico';
+    </div>
+    <p>This will select all records from the "Customers" table where the "Country" column has the value 'Mexico'.</p>
+  </div>
+
+  <div class="section">
+    <h2>Text Fields vs. Numeric Fields</h2>
+    <p>SQL requires single quotes around text values (most database systems will also allow double quotes). However, numeric fields should not be enclosed in quotes:</p>
+    <div class="code-box">
+SELECT * FROM Customers
+WHERE CustomerID=1;
+    </div>
+    <p>It is important to use the correct syntax to avoid errors.</p>
+  </div>
+
+</body>
+</html>

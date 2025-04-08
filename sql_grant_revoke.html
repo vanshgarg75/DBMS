@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL GRANT and REVOKE Statements</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    ul {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL GRANT and REVOKE Statements</h1>
+    <p>In SQL, managing user permissions is crucial for database security and integrity. The <code>GRANT</code> and <code>REVOKE</code> statements are used to control access by assigning or removing privileges from users or roles.</p>
+  </div>
+
+  <div class="section">
+    <h2>GRANT Statement</h2>
+    <p>The <code>GRANT</code> statement is used to provide specific privileges to a user or role. These privileges define the actions that the user or role can perform on database objects.</p>
+    <h3>Syntax</h3>
+    <div class="code-box">
+GRANT privilege_name(s)
+ON object_name
+TO {user_name | PUBLIC | role_name}
+[WITH GRANT OPTION];
+    </div>
+    <ul>
+      <li><code>privilege_name(s)</code>: The specific privileges to be granted (e.g., SELECT, INSERT).</li>
+      <li><code>object_name</code>: The database object to which the privileges apply.</li>
+      <li><code>user_name</code>: The user who will receive the privileges.</li>
+      <li><code>role_name</code>: The role that will receive the privileges.</li>
+      <li><code>PUBLIC</code>: Grants the privileges to all users.</li>
+      <li><code>WITH GRANT OPTION</code>: Allows the grantee to grant the same privileges to others.</li>
+    </ul>
+    <h3>Example</h3>
+    <p>Granting SELECT, INSERT, and DELETE privileges on the 'mydb' database to 'user1':</p>
+    <div class="code-box">
+GRANT SELECT, INSERT, DELETE ON mydb TO 'user1'@'localhost';
+    </div>
+    <p>In this example, 'user1' is granted the privileges to select, insert, and delete data in the 'mydb' database.</p>
+  </div>
+
+  <div class="section">
+    <h2>REVOKE Statement</h2>
+    <p>The <code>REVOKE</code> statement is used to remove specific privileges from a user or role, effectively revoking their ability to perform certain actions on database objects.</p>
+    <h3>Syntax</h3>
+    <div class="code-box">
+REVOKE privilege_name(s)
+ON object_name
+FROM {user_name | PUBLIC | role_name};
+    </div>
+    <ul>
+      <li><code>privilege_name(s)</code>: The specific privileges to be revoked.</li>
+      <li><code>object_name</code>: The database object from which the privileges are to be revoked.</li>
+      <li><code>user_name</code>: The user from whom the privileges will be revoked.</li>
+      <li><code>role_name</code>: The role from which the privileges will be revoked.</li>
+      <li><code>PUBLIC</code>: Revokes the privileges from all users.</li>
+    </ul>
+    <h3>Example</h3>
+    <p>Revoking the INSERT privilege on the 'mydb' database from 'user1':</p>
+    <div class="code-box">
+REVOKE INSERT ON mydb FROM 'user1'@'localhost';
+    </div>
+    <p>In this example, the INSERT privilege is removed from 'user1', preventing them from inserting data into the 'mydb' database.</p>
+  </div>
+
+  <div class="section">
+    <h2>Understanding Privileges</h2>
+    <p>Privileges in SQL define the specific actions that users or roles are permitted to perform on database objects. Common privileges include:</p>
+    <ul>
+      <li><code>SELECT</code>: Allows reading data from a table.</li>
+      <li><code>INSERT</code>: Allows inserting new data into a table.</li>
+      <li><code>UPDATE</code>: Allows modifying existing data in a table.</li>
+      <li><code>DELETE</code>: Allows deleting data from a table.</li>
+      <li><code>EXECUTE</code>: Allows running stored procedures or functions.</li>
+    </ul>
+    <p>By carefully assigning and revoking privileges, database administrators can ensure that users have appropriate access levels, thereby maintaining data security and integrity.</p>
+  </div>
+
+</body>
+</html>

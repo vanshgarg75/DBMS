@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL CREATE VIEW Statement</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    ul {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL CREATE VIEW Statement</h1>
+    <p>In SQL, a <strong>view</strong> is a virtual table based on the result set of an SQL statement. A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.</p>
+    <p>You can add SQL statements and functions to a view and present the data as if the data were coming from a single table. A view is created with the <code>CREATE VIEW</code> statement.</p>
+  </div>
+
+  <div class="section">
+    <h2>CREATE VIEW Syntax</h2>
+    <div class="code-box">
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+    </div>
+    <p><strong>Note:</strong> A view always shows up-to-date data! The database engine recreates the view every time a user queries it.</p>
+  </div>
+
+  <div class="section">
+    <h2>SQL CREATE VIEW Examples</h2>
+
+    <h3>Example 1: View of Customers from Brazil</h3>
+    <p>The following SQL creates a view that shows all customers from Brazil:</p>
+    <div class="code-box">
+CREATE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName
+FROM Customers
+WHERE Country = 'Brazil';
+    </div>
+    <p>We can query the view above as follows:</p>
+    <div class="code-box">
+SELECT * FROM [Brazil Customers];
+    </div>
+
+    <h3>Example 2: View of Products Above Average Price</h3>
+    <p>The following SQL creates a view that selects every product in the "Products" table with a price higher than the average price:</p>
+    <div class="code-box">
+CREATE VIEW [Products Above Average Price] AS
+SELECT ProductName, Price
+FROM Products
+WHERE Price > (SELECT AVG(Price) FROM Products);
+    </div>
+    <p>We can query the view above as follows:</p>
+    <div class="code-box">
+SELECT * FROM [Products Above Average Price];
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Updating a View</h2>
+    <p>A view can be updated with the <code>CREATE OR REPLACE VIEW</code> statement.</p>
+
+    <h3>CREATE OR REPLACE VIEW Syntax</h3>
+    <div class="code-box">
+CREATE OR REPLACE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+    </div>
+
+    <h3>Example: Adding the "City" Column</h3>
+    <p>The following SQL adds the "City" column to the "Brazil Customers" view:</p>
+    <div class="code-box">
+CREATE OR REPLACE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName, City
+FROM Customers
+WHERE Country = 'Brazil';
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Dropping a View</h2>
+    <p>A view is deleted with the <code>DROP VIEW</code> statement.</p>
+
+    <h3>DROP VIEW Syntax</h3>
+    <div class="code-box">
+DROP VIEW view_name;
+    </div>
+  </div>
+
+</body>
+</html>

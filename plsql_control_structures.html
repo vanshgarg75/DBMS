@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PL/SQL Control Structures</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+    h2 {
+      font-size: 22px;
+      color: #333;
+      margin-top: 30px;
+    }
+    h3 {
+      font-size: 18px;
+      color: #333;
+      margin-top: 20px;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+    .syntax, .example {
+      border-left: 5px solid #04AA6D;
+      background-color: #f4f4f4;
+      padding: 12px;
+      margin: 20px 0;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PL/SQL Control Structures</h1>
+
+  <p>Control structures in PL/SQL are used to control the flow of execution within a program. There are three main types of control structures:</p>
+  <ul>
+    <li>Conditional Control (IF, CASE)</li>
+    <li>Iterative Control (LOOP, WHILE, FOR)</li>
+    <li>Sequential Control (GOTO, NULL)</li>
+  </ul>
+
+  <h2>1. Conditional Control</h2>
+
+  <h3>IF-THEN</h3>
+  <div class="syntax">
+IF condition THEN
+   -- statements
+END IF;
+  </div>
+
+  <h3>IF-THEN-ELSE</h3>
+  <div class="syntax">
+IF condition THEN
+   -- statements
+ELSE
+   -- alternative statements
+END IF;
+  </div>
+
+  <h3>IF-THEN-ELSIF</h3>
+  <div class="syntax">
+IF condition1 THEN
+   -- statements
+ELSIF condition2 THEN
+   -- statements
+ELSE
+   -- default statements
+END IF;
+  </div>
+
+  <h3>Example</h3>
+  <div class="example">
+DECLARE
+  grade CHAR(1) := 'B';
+BEGIN
+  IF grade = 'A' THEN
+    DBMS_OUTPUT.PUT_LINE('Excellent');
+  ELSIF grade = 'B' THEN
+    DBMS_OUTPUT.PUT_LINE('Very Good');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Needs Improvement');
+  END IF;
+END;
+  </div>
+
+  <h3>CASE Statement</h3>
+  <div class="syntax">
+CASE selector
+  WHEN 'A' THEN statement1;
+  WHEN 'B' THEN statement2;
+  ELSE default_statement;
+END CASE;
+  </div>
+
+  <div class="example">
+DECLARE
+  grade CHAR(1) := 'A';
+BEGIN
+  CASE grade
+    WHEN 'A' THEN DBMS_OUTPUT.PUT_LINE('Excellent');
+    WHEN 'B' THEN DBMS_OUTPUT.PUT_LINE('Very Good');
+    ELSE DBMS_OUTPUT.PUT_LINE('Other');
+  END CASE;
+END;
+  </div>
+
+  <h2>2. Iterative Control</h2>
+
+  <h3>Basic LOOP</h3>
+  <div class="syntax">
+LOOP
+   -- statements
+   EXIT WHEN condition;
+END LOOP;
+  </div>
+
+  <div class="example">
+DECLARE
+  i NUMBER := 1;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('i = ' || i);
+    i := i + 1;
+    EXIT WHEN i > 5;
+  END LOOP;
+END;
+  </div>
+
+  <h3>WHILE LOOP</h3>
+  <div class="syntax">
+WHILE condition LOOP
+   -- statements
+END LOOP;
+  </div>
+
+  <div class="example">
+DECLARE
+  i NUMBER := 1;
+BEGIN
+  WHILE i <= 5 LOOP
+    DBMS_OUTPUT.PUT_LINE('i = ' || i);
+    i := i + 1;
+  END LOOP;
+END;
+  </div>
+
+  <h3>FOR LOOP</h3>
+  <div class="syntax">
+FOR counter IN [REVERSE] lower_bound..upper_bound LOOP
+   -- statements
+END LOOP;
+  </div>
+
+  <div class="example">
+BEGIN
+  FOR i IN 1..5 LOOP
+    DBMS_OUTPUT.PUT_LINE('i = ' || i);
+  END LOOP;
+END;
+  </div>
+
+  <h2>3. Sequential Control</h2>
+
+  <h3>GOTO Statement</h3>
+  <div class="syntax">
+GOTO label;
+...
+<<label>>
+   -- statements
+  </div>
+
+  <div class="example">
+DECLARE
+  x NUMBER := 10;
+BEGIN
+  IF x = 10 THEN
+    GOTO skip;
+  END IF;
+  DBMS_OUTPUT.PUT_LINE('This will not be printed');
+<<skip>>
+  DBMS_OUTPUT.PUT_LINE('Skipped to here');
+END;
+  </div>
+
+  <h3>NULL Statement</h3>
+  <p>Used as a placeholder when no action is needed.</p>
+  <div class="syntax">
+IF salary IS NULL THEN
+   NULL; -- do nothing
+ELSE
+   DBMS_OUTPUT.PUT_LINE('Salary is not null');
+END IF;
+  </div>
+
+  <h2>Conclusion</h2>
+  <p>Control structures allow developers to write logic-driven programs that can make decisions and repeat actions. PL/SQL offers a full set of features for writing efficient procedural code.</p>
+
+</body>
+</html>

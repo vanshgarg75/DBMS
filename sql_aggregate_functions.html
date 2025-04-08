@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL Aggregate Functions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      color: #2a2a2a;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .code-box {
+      background-color: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    ul {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>SQL Aggregate Functions</h1>
+    <p>An aggregate function performs a calculation on a set of values and returns a single value. Aggregate functions are commonly used with the <code>GROUP BY</code> clause in the <code>SELECT</code> statement to group the result-set by one or more columns.</p>
+    <p>The most commonly used SQL aggregate functions are:</p>
+    <ul>
+      <li><code>MIN()</code> - Returns the smallest value in a set.</li>
+      <li><code>MAX()</code> - Returns the largest value in a set.</li>
+      <li><code>COUNT()</code> - Returns the number of rows that match a specified criterion.</li>
+      <li><code>SUM()</code> - Returns the total sum of a numeric column.</li>
+      <li><code>AVG()</code> - Returns the average value of a numeric column.</li>
+    </ul>
+    <p>Aggregate functions ignore NULL values, except for <code>COUNT()</code>.</p>
+  </div>
+
+  <div class="section">
+    <h2>COUNT() Function</h2>
+    <p>The <code>COUNT()</code> function returns the number of rows that match a specified criterion.</p>
+    <h3>Syntax</h3>
+    <div class="code-box">
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+    </div>
+    <h3>Example</h3>
+    <p>Find the number of products:</p>
+    <div class="code-box">
+SELECT COUNT(ProductID)
+FROM Products;
+    </div>
+    <p><strong>Note:</strong> NULL values are not counted.</p>
+  </div>
+
+  <div class="section">
+    <h2>AVG() Function</h2>
+    <p>The <code>AVG()</code> function returns the average value of a numeric column.</p>
+    <h3>Syntax</h3>
+    <div class="code-box">
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+    </div>
+    <h3>Example</h3>
+    <p>Find the average price of all products:</p>
+    <div class="code-box">
+SELECT AVG(Price)
+FROM Products;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>SUM() Function</h2>
+    <p>The <code>SUM()</code> function returns the total sum of a numeric column.</p>
+    <h3>Syntax</h3>
+    <div class="code-box">
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+    </div>
+    <h3>Example</h3>
+    <p>Return the sum of all Quantity fields in the OrderDetails table:</p>
+    <div class="code-box">
+SELECT SUM(Quantity)
+FROM OrderDetails;
+    </div>
+    <p>You can add a WHERE clause to specify conditions:</p>
+    <p>Return the sum of the Quantity field for the product with ProductID 11:</p>
+    <div class="code-box">
+SELECT SUM(Quantity)
+FROM OrderDetails
+WHERE ProductID = 11;
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>MIN() and MAX() Functions</h2>
+    <p>The <code>MIN()</code> function returns the smallest value of the selected column, while the <code>MAX()</code> function returns the largest value of the selected column.</p>
+    <h3>Syntax</h3>
+    <p>MIN:</p>
+    <div class="code-box">
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+    </div>
+    <p>MAX:</p>
+    <div class="code-box">
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+    </div>
+    <h3>Example</h3>
+    <p>Find the lowest and highest prices of products:</p>
+    <p>MIN:</p>
+    <div class="code-box">
+SELECT MIN(Price)
+FROM Products;
+    </div>
+    <p>MAX:</p>
+    <div class="code-box">
+SELECT MAX(Price)
+FROM Products;
+    </div>
+  </div>
+
+</body>
+</html>
